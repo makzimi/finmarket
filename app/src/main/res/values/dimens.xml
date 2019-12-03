@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_list">15dp</dimen>
+    <dimen name="margin_normal">10dp</dimen>
+    <dimen name="margin_big">14dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="toolbar_elevation">5dp</dimen>
+    <dimen name="detailed_image_height">140dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+</resources>

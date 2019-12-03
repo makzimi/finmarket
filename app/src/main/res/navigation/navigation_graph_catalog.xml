@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph_catalog"
+    app:startDestination="@id/stockListDestination">
+
+    <fragment
+        android:id="@+id/stockListDestination"
+        android:name="com.makzimi.finmarket.catalog.stocklist.ui.StockListFragment"
+        android:label="@string/all_stocks"
+        tools:layout="@layout/fragment_stock_list" >
+
+        <action
+            android:id="@+id/action_stockListDestination_to_stockDetailsDestination"
+            app:destination="@id/stockDetailsDestination" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/stockDetailsDestination"
+        android:name="com.makzimi.finmarket.stockdetail.ui.StockDetailsFragment"
+        android:label="{symbol}"
+        tools:layout="@layout/fragment_stock_details" >
+
+        <argument
+            android:name="symbol"
+            app:argType="string" />
+
+    </fragment>
+
+</navigation>

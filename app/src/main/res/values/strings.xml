@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">FinMarket</string>
+
+    <string name="all_stocks">All stocks</string>
+    <string name="favorites">Favorites</string>
+    <string name="information">Information</string>
+    <string name="stock">Stock</string>
+    <string name="news">News</string>
+    <string name="empty_list">Nothing was found</string>
+    <string name="empty_favorites">Your favorites list is empty right now.</string>
+    <string name="loading_error">Loading error. Please reload the page.</string>
+
+    <string name="company_name">Company name</string>
+    <string name="description">Description</string>
+    <string name="ceo">CEO</string>
+    <string name="last_div">Last Dividends</string>
+    <string name="sector">Sector</string>
+    <string name="industry">Industry</string>
+    <string name="website">Website</string>
+
+    <string name="powered_by">Data powered by:</string>
+    <string name="financialmodelingprep">https://financialmodelingprep.com/</string>
+    <string name="newsapi">https://newsapi.org/</string>
+
+    <string name="source_code">Source code:</string>
+    <string name="github_link">https://github.com/makzimi/</string>
+
+    <string name="version">Version: %1$s</string>
+
+    <string name="news_header_normal">NEWS:</string>
+    <string name="news_header_loading">Loading news...</string>
+    <string name="news_header_empty">There is no news for this item.</string>
+
+</resources>

@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+    compileSdkVersion 29
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.makzimi.finmarket"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        targetCompatibility = 1.8
+        sourceCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+
+    def legacySupport = '1.0.0-alpha1'
+    implementation "androidx.legacy:legacy-support-v4:$legacySupport"
+
+    def appCompatVersion = '1.1.0'
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+
+    def ktxVersion = '1.1.0'
+    implementation "androidx.core:core-ktx:$ktxVersion"
+
+    def constraintLayoutVersion = '1.1.3'
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    def gsonVersion = '2.8.6'
+    implementation "com.google.code.gson:gson:$gsonVersion"
+
+    def okhttpVersion = '3.14.4'
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+
+    def retrofitVersion = '2.6.2'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    def daggerVersion = '2.25.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+
+    def lifecycleVersion = "2.1.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+
+    def roomVersion = '2.2.1'
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    implementation "androidx.room:room-rxjava2:$roomVersion"
+
+    def pagingVersion = "2.1.0"
+    implementation "androidx.paging:paging-runtime:$pagingVersion"
+
+    def rxJavaAndroidVersion = '2.1.1'
+    implementation "io.reactivex.rxjava2:rxandroid:$rxJavaAndroidVersion"
+
+    def rxJavaVersion = '2.2.15'
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+
+    def rxCallAdapterVersion = '2.6.2'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxCallAdapterVersion"
+
+    def reactiveStreamsVersion = "1.1.1"
+    implementation "android.arch.lifecycle:reactivestreams:$reactiveStreamsVersion"
+
+    def glideVersion = "4.10.0"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

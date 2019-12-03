@@ -1,0 +1,30 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:tint">@color/textColorLight</item>
+        <item name="colorControlNormal">@color/textColorLight</item>
+        <item name="android:textColorSecondary">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/textColorLight</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextLabel">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="TextViewLabel">
+        <item name="android:textAppearance">@style/TextLabel</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:gravity">left</item>
+        <item name="android:padding">@dimen/margin_small</item>
+    </style>
+
+</resources>
