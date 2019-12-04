@@ -1,6 +1,8 @@
 package com.makzimi.finmarket.favorites.data
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.LiveDataReactiveStreams
+import androidx.lifecycle.MediatorLiveData
 import com.makzimi.finmarket.catalog.stocklist.data.StockListDao
 import com.makzimi.finmarket.common.RepositoryResult
 import com.makzimi.finmarket.model.StockEntity
@@ -18,11 +20,33 @@ class FavoritesRepository  @Inject constructor(
         const val REFRESH_TIMEOUT = 60
     }
 
+    private val allFavoritesStream = favoritesDao.getFavorites()
+    private val _favoritesStocks: MediatorLiveData<List<StockEntity>> = MediatorLiveData()
+    private val favoritesStocks: LiveData<List<StockEntity>> = _favoritesStocks
+
     private var disposable = CompositeDisposable()
     private var lastFetchTime: Long = 0
 
+    init {
+        val source: LiveData<List<StockEntity>> =
+            LiveDataReactiveStreams.fromPublisher(allFavoritesStream.map{
+                    val fullFavoritesStockList =
+                        if(it.isNullOrEmpty()) {
+                            listOf()
+                        } else {
+                            favoritesDao.getFavoritesFull()
+                        }
+                    fullFavoritesStockList
+                }
+            )
+
+        _favoritesStocks.addSource(source) {
+            _favoritesStocks.value = it
+        }
+    }
+
     fun observeFavorites(): LiveData<List<StockEntity>> {
-        return favoritesDao.getAll()
+        return favoritesStocks
     }
 
     private fun fetch(favoriteStocks: List<StockEntity>) {

@@ -12,7 +12,7 @@ class FavoritesViewModel @Inject constructor(
     private val repository: FavoritesRepository
 ): ViewModel() {
 
-    private var favoritesSymbols: LiveData<List<StockEntity>> = repository.observeFavorites()
+    private var favoritesStocks: LiveData<List<StockEntity>> = repository.observeFavorites()
     private val _stocks: MediatorLiveData<RepositoryResult<List<StockEntity>>> = MediatorLiveData()
     val stocks: LiveData<RepositoryResult<List<StockEntity>>> = _stocks
 
@@ -20,7 +20,7 @@ class FavoritesViewModel @Inject constructor(
 
     init {
         _stocks.value = RepositoryResult.loading()
-        _stocks.addSource(favoritesSymbols) {
+        _stocks.addSource(favoritesStocks) {
             if(it.isNullOrEmpty()) {
                 _stocks.value = RepositoryResult.success(listOf())
             } else {
@@ -42,7 +42,7 @@ class FavoritesViewModel @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
-        _stocks.removeSource(favoritesSymbols)
+        _stocks.removeSource(favoritesStocks)
     }
 
 }
