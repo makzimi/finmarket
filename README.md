@@ -27,6 +27,9 @@ The app is being built using Clean Architecture based on the MVVM pattern. Archi
 
 ### UI
 A sample app consist of 3 screens: Stock List, Stock Details including News section and Favorites screen.
+![](https://raw.githubusercontent.com/makzimi/finmarket/master/screenshots/Screenshot_01.png)
+![](https://raw.githubusercontent.com/makzimi/finmarket/master/screenshots/Screenshot_02.png)
+![](https://raw.githubusercontent.com/makzimi/finmarket/master/screenshots/Screenshot_03.png)
 
 ### License
 Copyright 2019 Kachinkin Maxim
