@@ -13,7 +13,7 @@ interface NewsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(news: List<NewsEntity>)
 
-    @Query("DELETE FROM stock WHERE symbol = :symbol")
+    @Query("DELETE FROM news_article WHERE symbol = :symbol")
     fun deleteNewsForSymbol(symbol: String)
 
     @Transaction
