@@ -20,6 +20,18 @@ The app is being built using Clean Architecture based on the MVVM pattern. Archi
 - RxAndroid 2 https://github.com/ReactiveX/RxAndroid
 - Glide https://github.com/bumptech/glide
 
+### Youtube-like UX pattern
+One of the UX patterns of nowadays is youtube or instagram-like patterns. In this UX each section or page has its own back stack, so when going from page to page your back stack saves. For example, on Instagram you can go inside "Home" section and dive in a couple of screens and then go to the "Search" page and then back to Home and the state of the "Home" page still remains.
+To implement this kind of UX I used ViewPager and create in MainActivity my own back stack for it.
+```Kotlin
+private val viewPagerBackStack = Stack<Int>()
+```
+
+Then each of ViewPager Fragments is a Host Fragment in Android Navigation Component. So each of them has its own back stack controlled by Navigation Controller.
+
+### Single Source of Truth
+The sample app implements a single source of truth principle via Room persistence framework. This was done by the following. The repository layer always returns observable data (LiveData) from SQL database (Room). Depending on data (for example if it is empty) and on a timestamp of last request repository decides whether do update or not database. And each update of the database will trigger the emitting of LivaData to ViewModels.
+
 ### TODO
 - Tests
 - Kotlin Coroutines
