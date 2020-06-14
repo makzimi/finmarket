@@ -50,7 +50,7 @@ dependencies {
     def appCompatVersion = '1.1.0'
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
 
-    def ktxVersion = '1.1.0'
+    def ktxVersion = '1.3.0'
     implementation "androidx.core:core-ktx:$ktxVersion"
 
     def constraintLayoutVersion = '1.1.3'
@@ -78,18 +78,18 @@ dependencies {
     implementation "com.google.dagger:dagger-android:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
 
-    def lifecycleVersion = "2.1.0"
+    def lifecycleVersion = "2.2.0"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
 
-    def roomVersion = '2.2.1'
+    def roomVersion = '2.2.5'
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-runtime:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
     implementation "androidx.room:room-rxjava2:$roomVersion"
 
-    def pagingVersion = "2.1.0"
+    def pagingVersion = "2.1.2"
     implementation "androidx.paging:paging-runtime:$pagingVersion"
 
     def rxJavaAndroidVersion = '2.1.1'
@@ -118,7 +118,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    def androidx_arch_test_version = "2.0.1"
+    def androidx_arch_test_version = "2.1.0"
     androidTestImplementation "androidx.arch.core:core-testing:$androidx_arch_test_version"
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:5.5.2"
