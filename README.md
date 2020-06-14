@@ -43,6 +43,19 @@ A sample app consist of 3 screens: Stock List, Stock Details including News sect
 ![](https://raw.githubusercontent.com/makzimi/finmarket/master/screenshots/Screenshot_02.png)
 ![](https://raw.githubusercontent.com/makzimi/finmarket/master/screenshots/Screenshot_03.png)
 
+### API Keys
+To run the app please get api keys from
+https://financialmodelingprep.com/developer/docs/
+and
+https://newsapi.org/
+
+And put them in local.properties file:
+```Groovy
+stocksapi.token=a024a6d3ba39313cee81093d2e69cf04
+newsapi.token=92d610963da14182bccb8fe180cc993d
+```
+
+
 ### License
 Copyright 2019 Kachinkin Maxim
 
