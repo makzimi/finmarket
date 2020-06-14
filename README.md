@@ -1,6 +1,6 @@
 # Android sample app FinMarket
 
-FinMarket is a sample app written in Kotlin aiming to demonstrate Android app architecture using Android development best practices.
+FinMarket is a sample app (pet-project). Written in Kotlin aiming to demonstrate Android app architecture using Android development best practices.
 
 ### Introduction
 The app is being built using Clean Architecture based on the MVVM pattern. Architecture principles follow Google recommended Guide to app architecture.
