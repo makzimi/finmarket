@@ -8,9 +8,7 @@ interface NewsService {
 
     companion object {
         const val ENDPOINT = "https://newsapi.org/"
-
-        // You can retrieve your own api key on https://newsapi.org/
-        const val API_KEY = "92d610963da14182bccb8fe180cc993d"
+        const val API_KEY_NAME = "apiKey"
     }
 
     @GET("/v2/everything?language=en")

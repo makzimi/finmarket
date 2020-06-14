@@ -12,6 +12,9 @@ android {
         enabled = true
     }
 
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.makzimi.finmarket"
@@ -20,6 +23,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "STOCKS_API_TOKEN", "\"${properties.getProperty("stocksapi.token")}\""
+        buildConfigField "String", "NEWS_API_TOKEN", "\"${properties.getProperty("newsapi.token")}\""
     }
 
     buildTypes {

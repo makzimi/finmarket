@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import dagger.Module
 import com.makzimi.finmarket.App
+import com.makzimi.finmarket.BuildConfig
 import com.makzimi.finmarket.R
 import com.makzimi.finmarket.data.AppDatabase
 import com.makzimi.finmarket.network.news.NewsService
@@ -29,7 +30,8 @@ class AppModule {
 
     @Provides
     @Named("stocksColumnCount")
-    fun provideStocksColumnCount(context: Context) = context.resources.getInteger(R.integer.stocks_column_count)
+    fun provideStocksColumnCount(context: Context) =
+        context.resources.getInteger(R.integer.stocks_column_count)
 
     @Singleton
     @Provides
@@ -42,17 +44,45 @@ class AppModule {
 
     @Singleton
     @Provides
-    @Named("NewsApiInterceptor")
-    fun provideNewsApiInterceptor(): Interceptor {
-        return Interceptor{
+    @Named("StocksApiInterceptor")
+    fun provideStocksApiInterceptor(): Interceptor {
+        return Interceptor {
             val newRequest: Request =
                 it.request()
                     .newBuilder()
-                    .url(it.request()
-                        .url()
-                        .newBuilder()
-                        .addQueryParameter("apiKey", NewsService.API_KEY)
-                        .build())
+                    .url(
+                        it.request()
+                            .url()
+                            .newBuilder()
+                            .addQueryParameter(
+                                StocksService.API_KEY_NAME,
+                                BuildConfig.STOCKS_API_TOKEN
+                            )
+                            .build()
+                    )
+                    .build()
+            it.proceed(newRequest)
+        }
+    }
+
+    @Singleton
+    @Provides
+    @Named("NewsApiInterceptor")
+    fun provideNewsApiInterceptor(): Interceptor {
+        return Interceptor {
+            val newRequest: Request =
+                it.request()
+                    .newBuilder()
+                    .url(
+                        it.request()
+                            .url()
+                            .newBuilder()
+                            .addQueryParameter(
+                                NewsService.API_KEY_NAME,
+                                BuildConfig.NEWS_API_TOKEN
+                            )
+                            .build()
+                    )
                     .build()
             it.proceed(newRequest)
         }
@@ -61,18 +91,22 @@ class AppModule {
     @Singleton
     @Provides
     @Named("OkHttpClientStocks")
-    fun provideOkHttpClientStocks(@Named("LoggingInterceptor") loggingInterceptor: Interceptor
+    fun provideOkHttpClientStocks(
+        @Named("LoggingInterceptor") loggingInterceptor: Interceptor,
+        @Named("StocksApiInterceptor") stocksInterceptor: Interceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(stocksInterceptor)
             .build()
     }
 
     @Singleton
     @Provides
     @Named("OkHttpClientNews")
-    fun provideOkHttpClientNews(@Named("LoggingInterceptor") loggingInterceptor: Interceptor,
-                                @Named("NewsApiInterceptor") newsApiInterceptor: Interceptor
+    fun provideOkHttpClientNews(
+        @Named("LoggingInterceptor") loggingInterceptor: Interceptor,
+        @Named("NewsApiInterceptor") newsApiInterceptor: Interceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
@@ -106,11 +140,13 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideStocksService(@Named("StocksRetrofit") retrofit: Retrofit) = retrofit.create(StocksService::class.java)
+    fun provideStocksService(@Named("StocksRetrofit") retrofit: Retrofit) =
+        retrofit.create(StocksService::class.java)
 
     @Singleton
     @Provides
-    fun provideNewsService(@Named("NewsRetrofit") retrofit: Retrofit) = retrofit.create(NewsService::class.java)
+    fun provideNewsService(@Named("NewsRetrofit") retrofit: Retrofit) =
+        retrofit.create(NewsService::class.java)
 
     @Singleton
     @Provides
@@ -135,7 +171,8 @@ class AppModule {
     @Singleton
     @Provides
     fun provideGlideRequestOptions() =
-        RequestOptions.placeholderOf(R.drawable.ic_image_placeholder).error(R.drawable.ic_image_error)
+        RequestOptions.placeholderOf(R.drawable.ic_image_placeholder)
+            .error(R.drawable.ic_image_error)
 
     @Singleton
     @Provides
